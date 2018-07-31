@@ -1,8 +1,6 @@
 import types from "../types";
 
-var initialState = [
-    test : 'acb',
-];
+var initialState = [];
 
 
 var myReducer = (state = initialState, action)=>{
