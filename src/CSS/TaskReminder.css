@@ -4,3 +4,10 @@
     text-align: center;
     font-weight: bold;
 }
+.Control{
+    padding: 20px;
+    padding-left: 30%;
+}
+.Control .form-group{
+    padding: 5px;
+}

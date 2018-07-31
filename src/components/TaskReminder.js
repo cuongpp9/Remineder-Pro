@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './../CSS/TaskReminder.css';
-import Form from './Form';
+import FormControl from './FormControl';
+import ListItem from './ListItem';
 class TaskReminder extends Component {
   render() {
     return (
@@ -8,10 +9,10 @@ class TaskReminder extends Component {
           <div className = "TaskReminder">
             <span>Reminder Pro</span>
           </div>
-          <Form/>
+          <FormControl/>
+          <ListItem/>
       </div>
     );
   }
 }
-
 export default TaskReminder;
