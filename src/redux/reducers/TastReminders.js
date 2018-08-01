@@ -14,26 +14,60 @@ var randomID = () =>{
     return s4()+ s4() +'_'+s4()+ s4() +'_'+s4()+ s4() +'_'+s4()+ s4();
 }
 
+var findIndex = (listRemind, id) =>{
+    var result = -1;
+    listRemind.forEach((reminderItem, index)=>{
+        if(reminderItem.id === id){
+            result = index;
+        }
+    });
+    return result;
+}
+
 var myReducer = (state = initialState, action) =>{
     switch(action.type){
         case types.LIST_REMINDER:
             return state;
 
         case types.ADD_REMINDER:
-        console.log("Kiem tra Action:",action);
+            console.log("Kiem tra Action:",action);
              var newItem = {
                  id: randomID(),
                  reminderItem : action.reminderItem.name,
                  dueDate: action.reminderItem.dueDate
                  //status : action.task.status === 'true'? true:false
              }
-             //state.push(newItem);
-             //localStorage.setItem('TastReminder', JSON.stringify(state));
+             state.push(newItem);
+             localStorage.setItem('TastReminder', JSON.stringify(state));
              console.log("vao Reducer:",newItem);
-            // state.push(newTask);
-            // localStorage.setItem('tasks', JSON.stringify(state));
+            //state.push(newTask);
+            //localStorage.setItem('tasks', JSON.stringify(state));
             return [...state];
-            //console.log("action AA", action);
+        case types.DELETE_REMINDER:
+            console.log("Kiem tra Action:",action);
+            var id = action.id;
+            var index = findIndex(state, id);
+            state.splice(index, 1);
+            localStorage.setItem('TastReminder', JSON.stringify(state));
+            console.log("vao Reducer:",newItem);
+            //localStorage.removeItem("TastReminder");
+        //state.push(newTask);
+        //localStorage.setItem('tasks', JSON.stringify(state));
+            return [...state];
+        
+        case types.CLEAR_REMINDER:
+            console.log("Da vao Clerar",action);
+            localStorage.removeItem("TastReminder");
+            // var id = action.id;
+            // var index = findIndex(state, id);
+            // state.splice(index, 1);
+            // localStorage.setItem('TastReminder', JSON.stringify(state));
+            // console.log("vao Reducer:",newItem);
+            // //localStorage.removeItem("TastReminder");
+            // //state.push(newTask);
+            // //localStorage.setItem('tasks', JSON.stringify(state));
+            return state;
+
         default: return state;
     }
 };

@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
-import './../CSS/TaskReminder.css';
+import './../CSS/TaskReminder.scss';
 import FormControl from './FormControl';
 import ListItem from './ListItem';
 import {connect} from 'react-redux';
+import * as actions from './../redux/actions/index';
 
 class TaskReminder extends Component {
+
+  clearItemReminder= ()=>{
+    this.props.onClearAllReminder();
+  }
+
   render() {
     console.log("todos", this.props);
       var {ListReminders} = this.props;
@@ -20,6 +26,8 @@ class TaskReminder extends Component {
           <div className="list-group">
             {elmListReminder}
           </div>
+          <button type="submit" className="btn btn-danger mb-2"
+            onClick = {this.clearItemReminder}>Clear Reminder</button>
       </div>
     );
   }
@@ -31,5 +39,12 @@ const mapStateToProps = (state) =>{
     ListReminders : state.TastReminders
   }
 }
+const mapDispatchToProps = (dispatch, props)=>{
+  return {
+    onClearAllReminder: () => {
+          dispatch(actions.clearReminder());
+      }
+  }
+}
 
-export default connect(mapStateToProps, null) (TaskReminder);
+export default connect(mapStateToProps, mapDispatchToProps) (TaskReminder);

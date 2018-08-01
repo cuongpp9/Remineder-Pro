@@ -57,9 +57,7 @@ class FormControl extends Component {
 }
 
 const mapStateToProps = (state) =>{
-  return{
-
-  }
+  return{}
 }
 const mapDispatchToProps = (dispatch, props)=>{
   return {
