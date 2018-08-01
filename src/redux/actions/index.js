@@ -1,5 +1,14 @@
-import * as AppActionType from './AppActionType'
+import *as types from '../types/ActionType'
 
-export default {
-  AppActionType
+export const listAllReminder = () =>{
+    return {
+        type: types.LIST_REMINDER
+    }
+}
+
+export const addReminder = (reminderItem) =>{
+  return {
+      type: types.ADD_REMINDER,
+      reminderItem //task:task
+  }
 }

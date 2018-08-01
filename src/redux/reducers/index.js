@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import ListReminder from './ListReminder';
+import TastReminders from './TastReminders';
 
 const myReducer = combineReducers({
-    ListReminder,
+    TastReminders
 });
 
 export default myReducer;

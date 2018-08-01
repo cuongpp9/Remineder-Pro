@@ -1,23 +1,13 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux';
 
 class ListItem extends Component {
     render() {
-        console.log(this.props.todos);
+        var {ListReminder} = this.props;
         return (
-            <div className="list-group">
-                <a href="" className="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
-                <a href="" className="list-group-item list-group-item-action">Morbi leo risus</a>
-                <a href="" className="list-group-item list-group-item-action">Porta ac consectetur ac</a>
-            </div>
+                <a href="" className="list-group-item list-group-item-action">{ListReminder.reminderItem}</a>
         );
     }
 }
 
-const mapStateToProps = (state) =>{
-    return {
-        todos : state.ListReminder,
-    }
-}
 
-export default connect(mapStateToProps, null) (ListItem);
+export default ListItem;

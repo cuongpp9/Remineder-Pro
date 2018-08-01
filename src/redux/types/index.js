@@ -1,5 +1,5 @@
-import * as ActionType from './ActionType'
+// import * as ActionType from './ActionType'
 
-export default {
-  ActionType
-}
+// export default {
+//    ActionType
+// }
