@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import moment from 'moment';
 import {connect} from 'react-redux';
-import * as actions from './../redux/actions/index';
+import './stype.scss';
+import * as actions from './../../../redux/actions/index';
 
 class ListItem extends Component {
     onDeleteItem = () =>{
@@ -15,7 +16,7 @@ class ListItem extends Component {
     render() {
         var {ListReminder} = this.props;
         return (
-            <a className="list-group-item list-group-item-action">
+            <a className="list-group-item list-group-item-action itemReminder">
                 <span  onClick = {this.onEditReminderItem}>{ListReminder.reminderItem}</span><br/>
                 <em>{moment(new Date(ListReminder.dueDate)).fromNow()}</em>
                 <span onClick ={this.onDeleteItem}>&#x2715;</span>

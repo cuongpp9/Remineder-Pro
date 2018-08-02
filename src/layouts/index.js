@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import './../CSS/TaskReminder.scss';
-import FormControl from './FormControl';
-import ListItem from './ListItem';
+import './stype.scss';
+import FormControl from './components/FormControl/';
+import ListItem from './components/ListItem/';
 import {connect} from 'react-redux';
 import * as actions from './../redux/actions/index';
 
@@ -19,15 +19,20 @@ class TaskReminder extends Component {
       });
     return (
       <div>
-          <div className = "TaskReminder">
-            <span>Reminder Pro</span>
-          </div>
-          <FormControl/>
-          <div className="list-group">
-            {elmListReminder}
-          </div>
-          <button type="submit" className="btn btn-danger mb-2"
-            onClick = {this.clearItemReminder}>Clear Reminder</button>
+        <div className = "FormReminder">
+        <div className = "TaskReminder">
+        <span>Reminder Pro</span>
+      </div>
+      <FormControl/>
+      <div className="list-group listItemReminder">
+        {elmListReminder}
+      </div>
+      <div className="btnClearReminder">
+      <button type="submit" className="btn btn-danger mb-2"
+        onClick = {this.clearItemReminder}>Clear Reminder</button>
+      </div>
+      
+        </div>
       </div>
     );
   }

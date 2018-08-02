@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import * as actions from './../redux/actions';
+import * as actions from './../../../redux/actions';
 import {connect} from 'react-redux';
+import './stype.scss';
 
 class FormControl extends Component {
   constructor(props){

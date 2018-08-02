@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import TaskReminder from './components/TaskReminder';
+import TaskReminder from './layouts';
 
 class App extends Component {
   render() {
