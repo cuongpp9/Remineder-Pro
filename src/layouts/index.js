@@ -24,7 +24,7 @@ class TaskReminder extends Component {
         <span>Reminder Pro</span>
       </div>
       <FormControl/>
-      <div className="list-group listItemReminder">
+      <div className="listItemReminder ">
         {elmListReminder}
       </div>
       <div className="btnClearReminder">
