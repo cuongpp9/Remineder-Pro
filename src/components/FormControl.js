@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import * as actions from './../redux/actions/index';
+import * as actions from './../redux/actions';
 import {connect} from 'react-redux';
 
 class FormControl extends Component {
@@ -8,6 +8,7 @@ class FormControl extends Component {
     this.state = {
      name: '',
      dueDate: '',
+     isUpdate: false
     }
   }
 
@@ -18,16 +19,53 @@ class FormControl extends Component {
     this.setState({
       [name]: value
     });
-  
 }
 
   onHandleSubmit = (event) =>{
-    console.log("asasdasd",this.state);
+    //console.log("asasdasd",this.state);
     event.preventDefault();
-    this.props.onAddReminder(this.state);
+    this.props.onSaveReminder(this.state);
+    this.setState({
+      isUpdate: false,
+    })
+    this.onClear();
     // this.props.onAddTask(this.state)
 }
+  //  componentWillMount(){
+  //    if(this.props.itemReminderOnSelect&& this.props.itemReminderOnSelect.id !== null){
+  //      this.setState({
+  //        id: this.props.itemReminderOnSelect.id,
+  //        name: this.props.itemReminderOnSelect.reminderItem,
+  //        dueDate: this.props.itemReminderOnSelect.dueDate,
+  //        isUpdate: false,
+  //      });
+  //    }
+  //    else{
+  //      this.onClear();
+  //    }
+  // }
 
+  componentWillReceiveProps(newProps){
+    if(newProps && newProps.itemReminderOnSelect.id !== null){
+      this.setState({
+        id: newProps.itemReminderOnSelect.id,
+        name: newProps.itemReminderOnSelect.reminderItem,
+        dueDate: newProps.itemReminderOnSelect.dueDate,
+        isUpdate: true
+      });
+    }
+    else{
+      this.onClear()
+    }
+  }
+  onClear = () =>{
+    this.setState({
+      id: '',
+      name: '',
+      dueDate: '',
+      isUpdate: false,
+    })
+  }
 
   render() {
     return (
@@ -43,13 +81,17 @@ class FormControl extends Component {
             />
           </div>
           <div className="form-group mx-sm-3 mb-2">
-            <input className="form-control" type="datetime-local"
+            <input className="form-control" 
+            type="datetime-local"
             value = {this.state.dueDate}
             onChange = {this.onHandChange}
             name = "dueDate"
             />
           </div>
-          <button type="submit" className="btn btn-success mb-2">Add Reminder</button>
+          <button type="submit" 
+            className={this.state.isUpdate=== true?"btn btn-primary mb-2":"btn btn-success mb-2"}>
+            {this.state.isUpdate=== true? 'Update Reminder':'Add Reminder'}
+          </button>
         </form>
       </div>
     );
@@ -57,12 +99,14 @@ class FormControl extends Component {
 }
 
 const mapStateToProps = (state) =>{
-  return{}
+  return{
+    itemReminderOnSelect: state.editReminder //Call props when selecting ItemReminder
+  }
 }
 const mapDispatchToProps = (dispatch, props)=>{
   return {
-    onAddReminder: (reminderItem) => {
-          dispatch(actions.addReminder(reminderItem));
+    onSaveReminder: (reminderItem) => {
+          dispatch(actions.saveReminder(reminderItem));
       }
   }
 }

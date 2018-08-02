@@ -12,10 +12,10 @@ class TaskReminder extends Component {
   }
 
   render() {
-    console.log("todos", this.props);
+    //console.log("todos", this.props);
       var {ListReminders} = this.props;
       var elmListReminder = ListReminders.map((ListReminder, index ) => {
-          return <ListItem key = {ListReminder.id} index = {index} ListReminder = {ListReminder}/>
+          return <ListItem key = {index} index = {index} ListReminder = {ListReminder}/>
       });
     return (
       <div>
@@ -34,7 +34,7 @@ class TaskReminder extends Component {
 }
 
 const mapStateToProps = (state) =>{
-  console.log(state.TastReminders);
+  //console.log(state.TastReminders);
   return {
     ListReminders : state.TastReminders
   }

@@ -6,9 +6,9 @@ export const listAllReminder = () =>{
     }
 }
 
-export const addReminder = (reminderItem) =>{
+export const saveReminder = (reminderItem) =>{
   return {
-      type: types.ADD_REMINDER,
+      type: types.SAVE_REMINDER,
       reminderItem //task:task
   }
 }
@@ -23,5 +23,12 @@ export const deleteReminder = (id) =>{
 export const clearReminder = () =>{
     return {
         type: types.CLEAR_REMINDER
+    }
+}
+
+export const editReminder = (reminderItem) =>{
+    return {
+        type: types.EDIT_REMINDER,
+        reminderItem,
     }
   }
