@@ -13,6 +13,7 @@ class FormControl extends Component {
     }
   }
 
+  //Listener when input text, due time. 
   onHandChange = (event) => {
     var target = event.target;
     var name = target.name;
@@ -22,30 +23,18 @@ class FormControl extends Component {
     });
   }
 
+  //save state submit form.
   onHandleSubmit = (event) => {
-    //console.log("asasdasd",this.state);
+    //console.log("check State:",this.state);
     event.preventDefault();
     this.props.onSaveReminder(this.state);
     this.setState({
       isUpdate: false,
     })
     this.onClear();
-    // this.props.onAddTask(this.state)
   }
-  //  componentWillMount(){
-  //    if(this.props.itemReminderOnSelect&& this.props.itemReminderOnSelect.id !== null){
-  //      this.setState({
-  //        id: this.props.itemReminderOnSelect.id,
-  //        name: this.props.itemReminderOnSelect.reminderItem,
-  //        dueDate: this.props.itemReminderOnSelect.dueDate,
-  //        isUpdate: false,
-  //      });
-  //    }
-  //    else{
-  //      this.onClear();
-  //    }
-  // }
 
+  //Listener when Receive new props
   componentWillReceiveProps(newProps) {
     if (newProps && newProps.itemReminderOnSelect.id !== null) {
       this.setState({
@@ -59,6 +48,7 @@ class FormControl extends Component {
       this.onClear()
     }
   }
+  //Clear Sate
   onClear = () => {
     this.setState({
       id: '',
@@ -100,7 +90,7 @@ class FormControl extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    itemReminderOnSelect: state.editReminder //Call props when selecting ItemReminder
+    itemReminderOnSelect: state.editReminder //map state editReminder props when selecting ItemReminder
   }
 }
 const mapDispatchToProps = (dispatch, props) => {

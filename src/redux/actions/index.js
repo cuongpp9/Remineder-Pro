@@ -6,6 +6,8 @@ export const listAllReminder = () =>{
     }
 }
 
+
+//////Action Add and update Reminder///////////////
 export const saveReminder = (reminderItem) =>{
   return {
       type: types.SAVE_REMINDER,
@@ -13,6 +15,7 @@ export const saveReminder = (reminderItem) =>{
   }
 }
 
+//////Action delete Reminder///////////////
 export const deleteReminder = (id) =>{
     return {
         type: types.DELETE_REMINDER,
@@ -20,12 +23,14 @@ export const deleteReminder = (id) =>{
     }
 }
 
+//////Action delete all reminder///////////////
 export const clearReminder = () =>{
     return {
         type: types.CLEAR_REMINDER
     }
 }
 
+//////Action delete all reminder///////////////
 export const editReminder = (reminderItem) =>{
     return {
         type: types.EDIT_REMINDER,
