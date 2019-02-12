@@ -14,6 +14,7 @@ class ListItem extends Component {
        this.props.onEditReminder(this.props.ListReminder);
     }
     render() {
+    
         var {ListReminder} = this.props;
         return (
             <a className="list-group-item list-group-item-action">

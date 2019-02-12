@@ -1,0 +1,6 @@
+export const LIST_REMINDER = 'LIST_REMINDER';
+export const SAVE_REMINDER = 'SAVE_REMINDER';
+export const DELETE_REMINDER = 'DELETE_REMINDER';
+export const CLEAR_REMINDER = 'CLEAR_REMINDER';
+export const EDIT_REMINDER = 'EDIT_REMINDER';
+export const FETCH_API = 'FETCH_API';
